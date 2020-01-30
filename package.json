@@ -12,7 +12,8 @@
   "author": "tr1s",
   "scripts": {
     "build": "webpack --config webpack.prod.js",
-    "start": "webpack-dev-server --open --config webpack.dev.js"
+    "dev": "webpack-dev-server --open --config webpack.dev.js",
+    "test": "jest"
   },
   "dependencies": {
     "babel-eslint": "^10.0.3",
@@ -34,10 +35,11 @@
     "write-file-webpack-plugin": "^4.5.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.3",
-    "@babel/preset-env": "^7.8.3",
+    "@babel/core": "7.8.4",
+    "@babel/preset-env": "7.8.4",
     "@fullhuman/postcss-purgecss": "^2.0.5",
     "autoprefixer": "^9.7.4",
+    "babel-jest": "25.1.0",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.4.2",
     "cssnano": "^4.1.10",
@@ -48,6 +50,7 @@
     "eslint-plugin-prettier": "^3.1.2",
     "file-loader": "^5.0.2",
     "html-loader": "^0.5.5",
+    "jest": "25.1.0",
     "node-sass": "^4.13.1",
     "postcss-loader": "^3.0.0",
     "prettier": "1.19.1",
