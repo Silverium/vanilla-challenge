@@ -29,6 +29,8 @@ module.exports = {
       }
     ],
     "import/prefer-default-export": 0,
+    "import/no-unresolved": 0, // TODO: fix linter to resolve with alias
+    "import/extensions": 0, // TODO: fix linter to resolve with alias
   },
   "settings": {
     "import/resolver": {
