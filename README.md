@@ -1,5 +1,6 @@
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD033 -->
+TODO: document README
 
 # tris-webpack-boilerplate
 

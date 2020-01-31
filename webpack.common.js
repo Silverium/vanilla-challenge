@@ -81,16 +81,10 @@ module.exports = {
       template: './src/index.html',
       inject: 'head'
     }),
-    new HtmlWebpackPlugin({
-      title: 'tris-404-page',
-      filename: '404.html',
-      template: './src/404.html',
-      inject: 'head'
-    }),
     new PreloadWebpackPlugin({
       rel: 'preload',
       as(entry) {
-        if (/\.(woff|woff2|ttf|otf)$/.test(entry)) return 'font';
+        return /\.(woff|woff2|ttf|otf)$/.test(entry) ? 'font' : '';
       },
       fileWhitelist: [/\.(woff|woff2|ttf|otf)$/],
       include: 'allAssets'
