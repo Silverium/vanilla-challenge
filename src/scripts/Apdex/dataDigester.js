@@ -1,26 +1,29 @@
-import { insertByOrder } from '@/scripts/utils';
+import { conditionGetter, elementInDictionarySorter } from '@/scripts/utils';
+import { APPS_ORDER_COMPARATOR, APPS_PROPERTY_TO_COMPARE } from '@/config';
 
 export const dataDigester = () => {
-  const digestHostAppData = (data = []) => {
+  const { getCondition } = conditionGetter();
+  // TODO: documentation
+  const hostAppEntryDigester = apdexByHost => entry => {
+    const condition = getCondition(APPS_ORDER_COMPARATOR, APPS_PROPERTY_TO_COMPARE);
+    const { host = [] } = entry;
+    host.forEach(elementInDictionarySorter(apdexByHost, entry, condition));
+  };
+
+  /**
+   *
+   * @param {Array} list
+   * @param {Function} condition
+   */
+  const digestHostAppData = (list = []) => {
     const apdexByHost = new Map();
-    data.forEach(entry => {
-      const { host = [] } = entry;
-      host.forEach(hostName => {
-        if (apdexByHost.has(hostName)) {
-          // working with reference types we don't need to reset the array
-          // but simply modify it in place
-          const arrayOfEntries = apdexByHost.get(hostName);
-          const condition = (a, b) => a.apdex < b.apdex;
-          insertByOrder(arrayOfEntries, entry, condition);
-        } else {
-          apdexByHost.set(hostName, [entry]);
-        }
-      });
-    });
+    list.forEach(hostAppEntryDigester(apdexByHost));
 
     return apdexByHost;
   };
+
   return Object.freeze({
-    digestHostAppData
+    digestHostAppData,
+    hostAppEntryDigester
   });
 };

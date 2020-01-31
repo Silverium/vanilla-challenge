@@ -1,14 +1,14 @@
 /**
  * Isolated function that inserts an element into a collection, when condition is met
- * @param {*} collection
+ * @param {Array} collection
  * @param {*} element
- * @param {*} condition
+ * @param {Function} condition
  */
 export const insertByOrder = (collection = [], element, condition = (a, b) => a > b) => {
   const { length } = collection;
   if (length) {
     // whenever the condition is met, insert the element into the collection
-    // TODO: optimize recursive function to walk the collection
+    // TODO: optimize recursive function to find the index inside the collection
     let counter = 0;
     // using a while loop instead a forEach, as it can be breaken when condition is met
     while (counter < length) {
@@ -23,6 +23,6 @@ export const insertByOrder = (collection = [], element, condition = (a, b) => a 
     // insert it the first
     collection.push(element);
   }
-  // no need to return collection, but it's nicer
+  // if no collection is provided, the created one is returned
   return collection;
 };
