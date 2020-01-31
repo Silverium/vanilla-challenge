@@ -2,6 +2,8 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
+    node: true,
+    jest: true
   },
   extends: [
     'airbnb-base',
@@ -25,6 +27,14 @@ module.exports = {
         singleQuote: true,
         printWidth: 100
       }
-    ]
+    ],
+    "import/prefer-default-export": 0,
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["./src"]
+      }
+    }
   }
 };

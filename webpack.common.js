@@ -13,6 +13,13 @@ module.exports = {
     main: './src/index.js',
     vendor: './src/vendor.js'
   },
+  resolve: {
+    extensions: ['.js', '.json'],
+    symlinks: false,
+    alias: {
+      '@': path.resolve(__dirname, 'src')
+    }
+  },
   module: {
     rules: [
       {
