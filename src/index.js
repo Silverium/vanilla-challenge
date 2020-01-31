@@ -6,8 +6,11 @@ import './fonts/libre-baskerville-v5-latin-regular.woff2';
 import './index.html';
 import './index.scss';
 import { ApdexSdk } from './scripts';
+import { hostAppData as data } from './mocks';
 
 OfflinePluginRuntime.install();
 
-const Apdex = ApdexSdk({ data: 'ello wold' });
-Apdex.getTopAppsByHost();
+const Apdex = ApdexSdk({ data });
+const first = Apdex.getTopAppsByHost('2b4cfcf7-81d5.kelli.org');
+const output = document.getElementById('output');
+output.innerHTML = JSON.stringify(first, 1, 1);
