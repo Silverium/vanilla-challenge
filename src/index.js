@@ -11,6 +11,8 @@ import { hostAppData as list } from './mocks';
 OfflinePluginRuntime.install();
 
 const Apdex = ApdexSdk({ list });
-const first = Apdex.getTopAppsByHost('2b4cfcf7-81d5.kelli.org');
+const firsts = Apdex.getTopAppsByHost('2b4cfcf7-81d5.kelli.org');
 const output = document.getElementById('output');
-output.innerHTML = JSON.stringify(first, 1, 1);
+Apdex.removeAppToHosts(firsts[0]);
+const seconds = Apdex.getTopAppsByHost('2b4cfcf7-81d5.kelli.org');
+output.innerHTML = JSON.stringify(firsts, 1, 1) + JSON.stringify(seconds, 1, 1);

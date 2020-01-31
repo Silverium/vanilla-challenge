@@ -1,4 +1,8 @@
-import { conditionGetter, elementInDictionarySorter } from '@/scripts/utils';
+import {
+  conditionGetter,
+  elementInDictionarySorter,
+  elementInSortedDictionaryRemover
+} from '@/scripts/utils';
 import { APPS_ORDER_COMPARATOR, APPS_PROPERTY_TO_COMPARE } from '@/config';
 
 export const dataDigester = () => {
@@ -8,6 +12,11 @@ export const dataDigester = () => {
     const condition = getCondition(APPS_ORDER_COMPARATOR, APPS_PROPERTY_TO_COMPARE);
     const { host = [] } = entry;
     host.forEach(elementInDictionarySorter(apdexByHost, entry, condition));
+  };
+  // TODO: documentation
+  const hostAppEntryGarbager = apdexByHost => entry => {
+    const { host = [] } = entry;
+    host.forEach(elementInSortedDictionaryRemover(apdexByHost, entry, APPS_PROPERTY_TO_COMPARE));
   };
 
   /**
@@ -24,6 +33,7 @@ export const dataDigester = () => {
 
   return Object.freeze({
     digestHostAppData,
-    hostAppEntryDigester
+    hostAppEntryDigester,
+    hostAppEntryGarbager
   });
 };
