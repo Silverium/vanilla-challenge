@@ -1,5 +1,5 @@
 import { insertByOrder } from '@/scripts/utils';
-// TODO: documentation
+// TODO: documentation, tests
 export const elementInDictionarySorter = (dictionary, element, condition) => key => {
   if (dictionary.has(key)) {
     // working with reference types we don't need to reset the array

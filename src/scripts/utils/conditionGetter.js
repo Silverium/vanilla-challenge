@@ -1,6 +1,6 @@
 // could be retrieved in any service
 import { COMPARATORS } from '@/config';
-// TODO: documentation
+// TODO: documentation, tests, rename this function and return it directly, no object
 export const conditionGetter = () => {
   const getCondition = (comparator, property) => {
     let meetsCondition;
