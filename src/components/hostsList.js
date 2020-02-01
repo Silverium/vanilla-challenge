@@ -27,7 +27,7 @@ const grid = rankedHosts.reduce((htmlString, hostName) => {
         attributes: [
           {
             key: 'class',
-            value: 'd-flex align-items-start my-2',
+            value: 'd-flex flex-nowrap align-items-start my-2',
           },
         ],
       });
@@ -60,10 +60,15 @@ const grid = rankedHosts.reduce((htmlString, hostName) => {
   return htmlString + card;
 }, '');
 export const hostsList = templateTag({
+  tag: 'div',
   attributes: [
     {
       key: 'class',
       value: 'hosts',
+    },
+    {
+      key: 'id',
+      value: 'hostsList',
     },
   ],
   content: grid,

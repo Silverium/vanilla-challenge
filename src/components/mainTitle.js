@@ -1,17 +1,23 @@
-import { templateTag } from '@/scripts';
+import { templateTag, templateInput, templateCheckbox } from '@/scripts';
 
 const userEmail = 'averylongemailaddress@companyname.com';
 const titleH1 = templateTag({
   content: 'Apps by Host',
-  tag: 'h1 flex-shrink-0',
+  tag: 'h1',
+  attributes: [
+    {
+      key: 'class',
+      value: ' flex-shrink-0',
+    },
+  ],
 });
 const emailHtml = templateTag({
   tag: 'span',
   content: userEmail,
   attributes: [
     {
-      key: 'class',
-      value: 'font-bold',
+      key: 'title',
+      value: userEmail,
     },
   ],
 });
@@ -25,9 +31,26 @@ const user = templateTag({
     },
   ],
 });
+const checkbox = templateCheckbox({
+  content: 'Show as an awesome grid',
+  name: 'listMode',
+  labelRight: true,
+  attributes: [
+    {
+      key: 'id',
+      value: 'listModeCheckbox',
+    },
+  ],
+  labelAttributes: [
+    {
+      key: 'class',
+      value: 'text-nowrap ml-2',
+    },
+  ],
+});
 export const mainTitle = templateTag({
   tag: 'header',
-  content: [titleH1, user].join(' '),
+  content: [titleH1, user, checkbox].join(' '),
   attributes: [
     {
       key: 'class',
