@@ -14,5 +14,10 @@
 @import "./styles/global/typography"; // global typography
 @import "./styles/global/global"; // global styles
 
+//! helpers
+@import "./styles/utils/helpers";
+
 //! sections
 @import "./styles/layout/header";
+@import "./styles/layout/grid";
+@import "./styles/layout/hosts-list";

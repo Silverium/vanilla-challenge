@@ -1,0 +1,1 @@
+export { templateTag } from './templateTag';

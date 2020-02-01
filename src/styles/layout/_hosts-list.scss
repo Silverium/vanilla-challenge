@@ -1,0 +1,11 @@
+.hosts {
+  &-list {
+    color: $black-soft;
+    .apdex {
+      width: 30px;
+    }
+  }
+  .card {
+    background-color: $white;
+  }
+}

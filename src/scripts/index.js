@@ -1,4 +1,2 @@
-import { ApdexSdk } from './Apdex/ApdexSdk';
-
-export { ApdexSdk };
-export default ApdexSdk;
+export { ApdexSdk } from './Apdex/ApdexSdk';
+export * from './templates';

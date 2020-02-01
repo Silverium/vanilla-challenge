@@ -15,22 +15,23 @@
 }
 
 //! set font variables
-$font-heading: 'Libre-Baskerville-Reg', Fallback, 'Georgia', serif;
-$font-body: sans-serif;
+$font-heading: 'HelveticaNeue-bold', Fallback, 'Georgia', serif;
+$font-body: 'HelveticaNeue';
 
 
 html {
   font-size: 62.5%; // 1rem = 10px, 3.5rem = 35px;
+  line-height: 1.2;
 }
 
 body {
   font-family: $font-body;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: $black;
 }
 
 h1 {
   font-family: $font-heading, serif;
-  font-size: 1.7rem;
+  font-size: 3.5rem;
   font-weight: 400;
 }

@@ -12,7 +12,8 @@ export const ApdexSdk = props => {
   return Object.freeze({
     ...topAppsByHostGetter(orderedMap),
     ...appToHostsAdder(props.list, orderedMap, hostAppEntryDigester),
-    ...appToHostsRemover(props.list, orderedMap, hostAppEntryGarbager)
+    ...appToHostsRemover(props.list, orderedMap, hostAppEntryGarbager),
+    getHostsList: () => [...orderedMap.keys()],
   });
 };
 export default ApdexSdk;
