@@ -22,76 +22,76 @@ module.exports = merge(common, {
           {
             loader: 'html-loader',
             options: {
-              minimize: true
-            }
-          }
-        ]
+              minimize: true,
+            },
+          },
+        ],
       },
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          'style-loader',
           {
             loader: 'css-loader',
             options: {
-              sourceMap: true
-            }
+              sourceMap: true,
+            },
           },
           {
             loader: 'postcss-loader',
             options: {
               sourceMap: true,
-              config: {
-                path: `${__dirname}/postcss.config.js`,
-                ctx: {
-                  env: 'production'
-                }
-              }
-            }
+              // config: {
+              //   path: `${__dirname}/postcss.config.js`,
+              //   ctx: {
+              //     env: 'production',
+              //   },
+              // },
+            },
           },
           {
             loader: 'sass-loader',
             options: {
-              sourceMap: true
-            }
-          }
-        ]
-      }
-    ]
+              sourceMap: true,
+            },
+          },
+        ],
+      },
+    ],
   },
   optimization: {
     minimizer: [
       new TerserPlugin({
         test: /\.js(\?.*)?$/i,
         parallel: true,
-        sourceMap: true
-      })
-    ]
+        sourceMap: true,
+      }),
+    ],
   },
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'style.[contentHash].css',
-      chunkFilename: '[id].css'
+      chunkFilename: '[id].css',
     }),
     new CompressionPlugin({
-      test: /\.(html|css|js)(\?.*)?$/i // only compressed html/css/js, skips compressing sourcemaps etc
+      test: /\.(html|css|js)(\?.*)?$/i, // only compressed html/css/js, skips compressing sourcemaps etc
     }),
     new ImageminPlugin({
       test: /\.(jpe?g|png|gif|svg)$/i,
       gifsicle: {
         // lossless gif compressor
-        optimizationLevel: 9
+        optimizationLevel: 9,
       },
       pngquant: {
         // lossy png compressor, remove for default lossless
-        quality: '75'
+        quality: '75',
       },
       plugins: [
         imageminMozjpeg({
           // lossy jpg compressor, remove for default lossless
-          quality: '75'
-        })
-      ]
+          quality: '75',
+        }),
+      ],
     }),
     new FaviconsWebpackPlugin({
       logo: './src/images/favicon.svg',
@@ -105,18 +105,18 @@ module.exports = merge(common, {
         theme_color: '#FFA8A8',
         icons: {
           coast: false,
-          yandex: false
-        }
+          yandex: false,
+        },
       },
       icons: {
         twitter: true,
-        windows: true
-      }
+        windows: true,
+      },
     }),
-    new OfflinePlugin()
+    new OfflinePlugin(),
   ],
   output: {
     filename: '[name].[contentHash].js',
-    path: path.resolve(__dirname, 'dist')
-  }
+    path: path.resolve(__dirname, 'dist'),
+  },
 });

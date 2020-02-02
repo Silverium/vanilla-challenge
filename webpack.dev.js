@@ -11,9 +11,9 @@ module.exports = merge(common, {
         test: /\.html$/,
         use: [
           {
-            loader: 'html-loader'
-          }
-        ]
+            loader: 'html-loader',
+          },
+        ],
       },
       {
         test: /\.(sa|sc|c)ss$/,
@@ -22,27 +22,27 @@ module.exports = merge(common, {
           {
             loader: 'css-loader',
             options: {
-              sourceMap: true
-            }
+              sourceMap: true,
+            },
           },
           {
             loader: 'postcss-loader',
             options: {
-              sourceMap: true
-            }
+              sourceMap: true,
+            },
           },
           {
             loader: 'sass-loader',
             options: {
-              sourceMap: true
-            }
-          }
-        ]
-      }
-    ]
+              sourceMap: true,
+            },
+          },
+        ],
+      },
+    ],
   },
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'dist')
-  }
+    path: path.resolve(__dirname, 'dist'),
+  },
 });

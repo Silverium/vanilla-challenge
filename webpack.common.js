@@ -11,20 +11,20 @@ module.exports = {
   mode: 'development',
   entry: {
     main: './src/index.js',
-    vendor: './src/vendor.js'
+    vendor: './src/vendor.js',
   },
   resolve: {
     extensions: ['.js', '.json'],
     symlinks: false,
     alias: {
-      '@': path.resolve(__dirname, 'src')
-    }
+      '@': path.resolve(__dirname, 'src'),
+    },
   },
   module: {
     rules: [
       {
         test: /\.txt$/,
-        use: 'raw-loader'
+        use: 'raw-loader',
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/,
@@ -35,10 +35,10 @@ module.exports = {
               esModule: false,
               name: '[name].[ext]',
               outputPath: 'images/',
-              publicPath: '/images/'
-            }
-          }
-        ]
+              publicPath: '/images/',
+            },
+          },
+        ],
       },
       {
         test: /\.(woff|woff2|ttf|otf)$/,
@@ -49,10 +49,10 @@ module.exports = {
               esModule: false,
               name: '[name].[ext]',
               outputPath: 'fonts/',
-              publicPath: 'fonts/'
-            }
-          }
-        ]
+              publicPath: 'fonts/',
+            },
+          },
+        ],
       },
       {
         test: /\.js$/,
@@ -60,11 +60,11 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env']
-          }
-        }
-      }
-    ]
+            presets: ['@babel/preset-env'],
+          },
+        },
+      },
+    ],
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -72,14 +72,14 @@ module.exports = {
     new CopyPlugin([
       {
         from: path.resolve(__dirname, 'src', 'robots.txt'),
-        to: path.resolve(__dirname, 'dist', 'robots.txt')
-      }
+        to: path.resolve(__dirname, 'dist', 'robots.txt'),
+      },
     ]),
     new HtmlWebpackPlugin({
       title: 'tris-home-page',
       filename: 'index.html',
       template: './src/index.html',
-      inject: 'head'
+      inject: 'head',
     }),
     new PreloadWebpackPlugin({
       rel: 'preload',
@@ -87,15 +87,15 @@ module.exports = {
         return /\.(woff|woff2|ttf|otf)$/.test(entry) ? 'font' : '';
       },
       fileWhitelist: [/\.(woff|woff2|ttf|otf)$/],
-      include: 'allAssets'
+      include: 'allAssets',
     }),
     new ScriptExtHtmlWebpackPlugin({
-      defaultAttribute: 'defer'
-    })
+      defaultAttribute: 'defer',
+    }),
   ],
   externals: {
     $: 'jquery',
     jquery: 'jQuery',
-    'window.$': 'jquery'
-  }
+    'window.$': 'jquery',
+  },
 };
