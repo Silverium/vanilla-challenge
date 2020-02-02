@@ -1,4 +1,4 @@
-import { hostsList, mainTitle, modalSdk } from '@/components';
+import { hostsListPlugin, mainTitleHtml, modalSdk } from '@/components';
 import { templateTag } from '@/scripts';
 
 export const appsByHosts = {
@@ -6,7 +6,7 @@ export const appsByHosts = {
     let { isGridMode } = state;
     const containerHtml = templateTag({
       attributes: [{ key: 'class', value: 'container' }],
-      content: [mainTitle, hostsList.load()].join(' '),
+      content: [mainTitleHtml, hostsListPlugin.getHtml()].join(' '),
     });
     const parser = new DOMParser();
     const doc = parser.parseFromString(containerHtml, 'text/html');
@@ -19,11 +19,12 @@ export const appsByHosts = {
     checkboxNode.addEventListener('click', event => {
       if (event?.target?.checked) {
         isGridMode = true;
-        hostsListNode.classList.add(...classesToToggle);
+        classesToToggle.forEach(className => hostsListNode.classList.add(className));
+        // hostsListNode.classList.add(...classesToToggle); is not compatible with IE 11
         labelTextNode.textContent = ' Show as list';
       } else {
         isGridMode = false;
-        hostsListNode.classList.remove(...classesToToggle);
+        classesToToggle.forEach(className => hostsListNode.classList.remove(className));
         labelTextNode.textContent = ' Show as an awesome grid';
       }
     });

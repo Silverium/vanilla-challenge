@@ -6,8 +6,8 @@ const Apdex = ApdexSdk({ list });
 // using window as a store
 window.Apdex = Apdex;
 
-export const hostsList = {
-  load() {
+export const hostsListPlugin = {
+  getHtml() {
     const rankedHosts = Apdex.getHostsList();
 
     const grid = rankedHosts.reduce((htmlString, hostName) => {

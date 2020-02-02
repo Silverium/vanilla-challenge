@@ -48,7 +48,7 @@ const checkbox = templateCheckbox({
     },
   ],
 });
-export const mainTitle = templateTag({
+export const mainTitleHtml = templateTag({
   tag: 'header',
   content: [titleH1, user, checkbox].join(' '),
   attributes: [
