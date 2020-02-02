@@ -6,25 +6,6 @@ import {
 import { APPS_ORDER_COMPARATOR, APPS_PROPERTY_TO_COMPARE } from '@/config';
 
 /**
- * @typedef {string} Host The domain in which Apps are hosted
- * @typedef {string} Contributor Contributor of the App
- */
-
-/**
- * @typedef AppData
- * @property {string} name
- * @property {Contributor[]} contributors
- * @property {number} version
- * @property {number} apdex
- * @property {Host[]} host
- */
-
-/**
- * @typedef {Map<Host,AppData[]} RankedAppsByHost Contains a ranked list of AppData
- * based on the `condition` specified, for each Host.
- */
-
-/**
  * Plugin that returns an object of methods that are able to create a Map of ranked AppData for each Host,
  * removing and adding AppData of the rankings
  */
@@ -38,10 +19,10 @@ export const dataDigester = () => {
    * ___
    * Complexity is O(n2) as we only loop on each host, and then on each element of the ranking.
    */
-  const hostAppEntryDigester = apdexByHost => AppData => {
+  const hostAppEntryDigester = apdexByHost => appData => {
     const condition = getCondition(APPS_ORDER_COMPARATOR, APPS_PROPERTY_TO_COMPARE);
-    const { host = [] } = AppData;
-    host.forEach(elementInDictionarySorter(apdexByHost, AppData, condition));
+    const { host = [] } = appData;
+    host.forEach(elementInDictionarySorter(apdexByHost, appData, condition));
   };
   /**
    * Returns a method that loops into each entry of `apdexByHost` and removes the coincidence of the AppData in the value
