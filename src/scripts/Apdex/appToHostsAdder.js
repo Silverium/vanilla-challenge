@@ -19,6 +19,6 @@ export const appToHostsAdder = (list, apdexByHost, hostAppEntryDigester) => {
     }
   };
   return Object.freeze({
-    addAppToHosts
+    addAppToHosts,
   });
 };

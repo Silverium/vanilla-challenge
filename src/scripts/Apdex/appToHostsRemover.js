@@ -20,6 +20,6 @@ export const appToHostsRemover = (list, apdexByHost, hostAppEntryGarbager) => {
     }
   };
   return Object.freeze({
-    removeAppToHosts
+    removeAppToHosts,
   });
 };

@@ -6,6 +6,6 @@ export const topAppsByHostGetter = collection => {
     return data.slice(0, resultsNumber);
   };
   return Object.freeze({
-    getTopAppsByHost
+    getTopAppsByHost,
   });
 };

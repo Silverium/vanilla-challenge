@@ -50,6 +50,22 @@ $displays: none, inline, inline-block, block, table, table-row, table-cell, flex
 .align-items-stretch {
   align-items: stretch;
 }
+.justify-content-start {
+  justify-content: flex-start;
+}
+.justify-content-end {
+  justify-content: flex-end;
+}
+.justify-content-center {
+  justify-content: center;
+}
+.justify-content-between {
+  justify-content: space-between;
+}
+.justify-content-around {
+  justify-content: space-around;
+}
+
 .flex-grow-0 {
   flex-grow: 0;
 }

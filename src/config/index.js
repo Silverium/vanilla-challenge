@@ -1,4 +1,5 @@
-export const APPS_BY_HOST_RESULTS_NUMBER = 5;
+export const APPS_BY_HOST_RESULTS_NUMBER = 25;
+export const APPS_BY_HOST_DISPLAY_NUMBER = 5;
 export const COMPARATORS = {
   greater: 'greater',
   smaller: 'smaller',
