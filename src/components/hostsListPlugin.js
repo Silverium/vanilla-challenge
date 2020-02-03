@@ -2,7 +2,7 @@ import { ApdexSdk, templateTag } from '@/scripts';
 import { hostAppData as list } from '@/mocks';
 import { APPS_BY_HOST_DISPLAY_NUMBER as resultsToDisplay } from '@/config';
 
-const Apdex = ApdexSdk({ list });
+const Apdex = ApdexSdk(list);
 // using window as a store
 window.Apdex = Apdex;
 

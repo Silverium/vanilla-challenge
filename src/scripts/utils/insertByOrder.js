@@ -1,8 +1,8 @@
 /**
  * Isolated function that inserts an element into a collection, when condition is met
- * @param {Array} collection
+ * @param {array} collection
  * @param {*} element
- * @param {Function} condition
+ * @param {function} condition
  */
 export const insertByOrder = (collection = [], element, condition = (a, b) => a > b) => {
   const { length } = collection;

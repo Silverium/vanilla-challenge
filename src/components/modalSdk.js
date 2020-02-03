@@ -1,9 +1,22 @@
+/**
+ * Sets the `innerHtml` property of the html element with id=`id`
+ * @param {string} id
+ * @param {string} text
+ */
 export const setInnerHtml = (id, text) => {
-  const element = document.getElementById(id);
-  if (element) {
+  try {
+    const element = document.getElementById(id);
     element.innerHTML = text;
+    return text;
+  } catch (error) {
+    console.error(error);
+    return false;
   }
 };
+/**
+ * When initialised, appends to the document.body a (hidden by default) modal html element
+ * with a header and a body, that can be modified through the corresponding methods
+ */
 export const modalSdk = () => {
   const modalId = 'newRelicModal';
   const headerId = 'newRelicModalHeader';
@@ -11,10 +24,24 @@ export const modalSdk = () => {
   const closeId = 'newRelicModalClose';
   let modalNode = document.getElementById(modalId);
   const hide = () => {
-    modalNode.style.display = 'none';
+    const none = 'none';
+    try {
+      modalNode.style.display = none;
+      return none;
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
   };
   const show = () => {
-    modalNode.style.display = 'block';
+    const block = 'block';
+    try {
+      modalNode.style.display = block;
+      return block;
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
   };
   if (!modalNode) {
     modalNode = document.createElement('div');
@@ -44,10 +71,10 @@ export const modalSdk = () => {
   const setBody = text => setInnerHtml(bodyId, text);
   const setHeader = text => setInnerHtml(headerId, text);
 
-  return {
+  return Object.freeze({
     hide,
     setBody,
     setHeader,
     show,
-  };
+  });
 };

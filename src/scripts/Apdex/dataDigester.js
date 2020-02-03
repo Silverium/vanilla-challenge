@@ -1,5 +1,5 @@
 import {
-  conditionGetter,
+  getConditionPlugin,
   elementInDictionarySorter,
   elementInSortedDictionaryRemover,
 } from '@/scripts/utils';
@@ -10,7 +10,7 @@ import { APPS_ORDER_COMPARATOR, APPS_PROPERTY_TO_COMPARE } from '@/config';
  * removing and adding AppData of the rankings
  */
 export const dataDigester = () => {
-  const { getCondition } = conditionGetter();
+  const { getCondition } = getConditionPlugin();
   /**
    * Returns a method that loops into each entry of `apdexByHost` and adds AppData ranked by the `Condition`
    * (defined in `getCondition`) in the value

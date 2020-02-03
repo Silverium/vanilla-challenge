@@ -1,7 +1,12 @@
 // could be retrieved in any service
 import { COMPARATORS } from '@/config';
-// TODO: documentation, tests, rename this function and return it directly, no object
-export const conditionGetter = () => {
+// TODO: tests, accept paths and primitives
+export const getConditionPlugin = () => {
+  /**
+   * Fetches the function to order an array of objects
+   * @param {Comparator} comparator
+   * @param {string} property Path to the property of the objects compared
+   */
   const getCondition = (comparator, property) => {
     let meetsCondition;
     switch (comparator) {
@@ -17,6 +22,6 @@ export const conditionGetter = () => {
     return meetsCondition;
   };
   return Object.freeze({
-    getCondition
+    getCondition,
   });
 };
