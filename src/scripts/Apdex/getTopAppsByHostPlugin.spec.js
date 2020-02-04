@@ -7,9 +7,7 @@ jest.mock('@/config', () => ({
 }));
 
 describe('getTopAppsByHostPlugin', () => {
-  beforeEach(() => {
-    jest.resetAllMocks();
-  });
+  beforeEach(jest.resetAllMocks);
   describe('Given a Map of RankedAppsByHost', () => {
     const { getTopAppsByHost } = getTopAppsByHostPlugin(apdexByHost);
     describe('Given a host with more elements than APPS_BY_HOST_RESULTS_NUMBER', () => {
