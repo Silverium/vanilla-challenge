@@ -1,5 +1,5 @@
 import { getTopAppsByHostPlugin } from './getTopAppsByHostPlugin';
-import { apdexByHost, host1, host2 } from '@/mocks';
+import { rankedAppsByHost, host1, host2 } from '@/mocks';
 import { APPS_BY_HOST_RESULTS_NUMBER as resultsNumber } from '@/config';
 
 jest.mock('@/config', () => ({
@@ -9,7 +9,7 @@ jest.mock('@/config', () => ({
 describe('getTopAppsByHostPlugin', () => {
   beforeEach(jest.resetAllMocks);
   describe('Given a Map of RankedAppsByHost', () => {
-    const { getTopAppsByHost } = getTopAppsByHostPlugin(apdexByHost);
+    const { getTopAppsByHost } = getTopAppsByHostPlugin(rankedAppsByHost);
     describe('Given a host with more elements than APPS_BY_HOST_RESULTS_NUMBER', () => {
       it('returns APPS_BY_HOST_RESULTS_NUMBER elements ', () => {
         expect(getTopAppsByHost(host1)).toHaveLength(resultsNumber);

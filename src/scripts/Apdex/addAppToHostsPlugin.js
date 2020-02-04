@@ -1,10 +1,10 @@
 //  TODO: tests
 /**
- * Composition function that adds one App to apdexByHost and to the list of Apps
+ * Composition function that adds one App to rankedAppsByHost and to the list of Apps
  * Isolated Molecular factory
  * @param {AppData[]} list of Apps
  * @param {RankedAppsByHost} rankedAppsByHost ordered Map of Apps for each Host
- * @param {function} hostAppEntryDigester adds corresponding App (ordered by apdex) to each Host of apdexByHost Map
+ * @param {function} hostAppEntryDigester adds corresponding App (ordered by apdex) to each Host of rankedAppsByHost Map
  */
 export const addAppToHostsPlugin = (list, rankedAppsByHost, hostAppEntryDigester) => {
   if (!(list && rankedAppsByHost && hostAppEntryDigester)) {

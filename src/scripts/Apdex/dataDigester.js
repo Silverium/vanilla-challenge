@@ -12,28 +12,30 @@ import { APPS_ORDER_COMPARATOR, APPS_PROPERTY_TO_COMPARE } from '@/config';
 export const dataDigester = () => {
   const { getCondition } = getConditionPlugin();
   /**
-   * Returns a method that loops into each entry of `apdexByHost` and adds AppData ranked by the `Condition`
+   * Returns a method that loops into each entry of `rankedAppsByHost` and adds AppData ranked by the `Condition`
    * (defined in `getCondition`) in the value
-   * @param {RankedAppsByHost} apdexByHost
+   * @param {RankedAppsByHost} rankedAppsByHost
    * @returns {(AppData:AppData) => void}
    * ___
    * Complexity is O(n2) as we only loop on each host, and then on each element of the ranking.
    */
-  const hostAppEntryDigester = apdexByHost => appData => {
+  const hostAppEntryDigester = rankedAppsByHost => appData => {
     const condition = getCondition(APPS_ORDER_COMPARATOR, APPS_PROPERTY_TO_COMPARE);
     const { host = [] } = appData;
-    host.forEach(elementInDictionarySorter(apdexByHost, appData, condition));
+    host.forEach(elementInDictionarySorter(rankedAppsByHost, appData, condition));
   };
   /**
-   * Returns a method that loops into each entry of `apdexByHost` and removes the coincidence of the AppData in the value
-   * @param {RankedAppsByHost} apdexByHost
+   * Returns a method that loops into each entry of `rankedAppsByHost` and removes the coincidence of the AppData in the value
+   * @param {RankedAppsByHost} rankedAppsByHost
    * @returns {(AppData:AppData) => void}
    * ___
    * Complexity is O(n2) as we only loop on each host, and then on each element of the ranking.
    */
-  const hostAppEntryGarbager = apdexByHost => AppData => {
+  const hostAppEntryGarbager = rankedAppsByHost => AppData => {
     const { host = [] } = AppData;
-    host.forEach(elementInSortedDictionaryRemover(apdexByHost, AppData, APPS_PROPERTY_TO_COMPARE));
+    host.forEach(
+      elementInSortedDictionaryRemover(rankedAppsByHost, AppData, APPS_PROPERTY_TO_COMPARE)
+    );
   };
 
   /**
@@ -46,10 +48,10 @@ export const dataDigester = () => {
    * Complexity is O(n2), as each App can have many related hosts, and each host needs to check all Apps.
    */
   const digestHostAppData = (list = []) => {
-    const apdexByHost = new Map();
-    list.forEach(hostAppEntryDigester(apdexByHost));
+    const rankedAppsByHost = new Map();
+    list.forEach(hostAppEntryDigester(rankedAppsByHost));
 
-    return apdexByHost;
+    return rankedAppsByHost;
   };
 
   return Object.freeze({

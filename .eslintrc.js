@@ -24,14 +24,16 @@ module.exports = {
         objects: 'always-multiline',
         imports: 'always-multiline',
         exports: 'never',
-        functions: 'always-multiline',
       },
     ],
 
     'prettier/prettier': [
       'error',
       {
+        trailingComma: 'es5',
+        tabWidth: 2,
         singleQuote: true,
+        proseWrap: 'always',
         printWidth: 100,
       },
     ],

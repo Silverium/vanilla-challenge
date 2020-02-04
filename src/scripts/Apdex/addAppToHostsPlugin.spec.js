@@ -1,9 +1,8 @@
 import { addAppToHostsPlugin } from './addAppToHostsPlugin';
-import { apdexByHost } from '@/mocks';
+import { rankedAppsByHost } from '@/mocks';
 
 describe('addAppToHostsPlugin', () => {
   const list = [1];
-  const rankedAppsByHost = apdexByHost;
   const hostAppEntryDigester = jest.fn(() => () => {});
   beforeEach(jest.clearAllMocks);
   describe('When missing parameters', () => {
