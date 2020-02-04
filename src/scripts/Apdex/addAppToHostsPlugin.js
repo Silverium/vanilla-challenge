@@ -15,14 +15,9 @@ export const addAppToHostsPlugin = (list, rankedAppsByHost, hostAppEntryDigester
    * @param {AppData} appData
    */
   const addAppToHosts = appData => {
-    try {
-      hostAppEntryDigester(rankedAppsByHost)(appData);
-      list.push(appData); // this line represents persisting the data into the source
-      return true;
-    } catch (error) {
-      console.error(error); // TODO: error manager (Sentry?)
-      return false;
-    }
+    hostAppEntryDigester(rankedAppsByHost)(appData);
+    list.push(appData); // this line represents persisting the data into the source
+    return true;
   };
   return Object.freeze({
     addAppToHosts,
