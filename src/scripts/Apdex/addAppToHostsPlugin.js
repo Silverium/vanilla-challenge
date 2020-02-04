@@ -1,4 +1,3 @@
-//  TODO: tests
 /**
  * Composition function that adds one App to rankedAppsByHost and to the list of Apps
  * Isolated Molecular factory
