@@ -33,10 +33,25 @@ export const appsByHosts = {
     }
     document.body = doc.body;
     const modalManager = modalSdk();
+
+    const hostNameNodes = document.getElementsByClassName('hostTitle');
+    [...hostNameNodes].forEach(hostNameNode => {
+      hostNameNode.classList.add('cursor-pointer');
+      hostNameNode.addEventListener('click', () => {
+        const { hostName } = hostNameNode.dataset;
+        modalManager.setHeader(hostName);
+
+        modalManager.setBody(hostsListPlugin.getHostsHtml([hostName]));
+
+        modalManager.show();
+      });
+    });
+
     const appInHosts = document.getElementsByClassName('appInHost');
 
     for (let hostIndex = 0; hostIndex < appInHosts.length; hostIndex += 1) {
       const hostNode = appInHosts[hostIndex];
+      hostNode.classList.add('cursor-pointer');
       hostNode.addEventListener('click', () => {
         const { appName, rankingIndex, hostName } = hostNode.dataset;
         modalManager.setHeader(appName);

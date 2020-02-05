@@ -1,17 +1,18 @@
 import { ApdexSdk, templateTag } from '@/scripts';
 import { hostAppData as list } from '@/mocks';
-import { APPS_BY_HOST_DISPLAY_NUMBER as resultsToDisplay } from '@/config';
+import { APPS_BY_HOST_DISPLAY_NUMBER } from '@/config';
 
 const Apdex = ApdexSdk(list);
 // using window as a store
 window.Apdex = Apdex;
 
-export const hostsListPlugin = {
-  getHtml() {
-    const rankedHosts = Apdex.getHostsList();
-
-    const grid = rankedHosts.reduce((htmlString, hostName) => {
-      const ranking = Apdex.getTopAppsByHost(hostName).slice(0, resultsToDisplay);
+export const hostsListPlugin = Object.freeze({
+  getHostsHtml(hostsList, resultsToDisplay) {
+    const grid = hostsList.reduce((htmlString, hostName) => {
+      const allrankingResults = Apdex.getTopAppsByHost(hostName);
+      const ranking = resultsToDisplay
+        ? allrankingResults.slice(0, resultsToDisplay)
+        : allrankingResults;
       const appsListLi = ranking
         .map((element, rankingIndex) => {
           const apdex = templateTag({
@@ -35,7 +36,7 @@ export const hostsListPlugin = {
             attributes: [
               {
                 key: 'class',
-                value: 'appInHost d-flex flex-nowrap align-items-start my-2 cursor-pointer',
+                value: 'appInHost d-flex flex-nowrap align-items-start my-2',
               },
               { key: 'data-host-name', value: hostName },
               { key: 'data-app-name', value: element.name },
@@ -54,8 +55,9 @@ export const hostsListPlugin = {
         attributes: [
           {
             key: 'class',
-            value: 'mx-3 font-bold',
+            value: 'hostTitle mx-3 font-bold',
           },
+          { key: 'data-host-name', value: hostName },
         ],
       });
 
@@ -70,6 +72,12 @@ export const hostsListPlugin = {
       });
       return htmlString + card;
     }, '');
+    return grid;
+  },
+  getHtml() {
+    const rankedHosts = Apdex.getHostsList();
+
+    const grid = this.getHostsHtml(rankedHosts, APPS_BY_HOST_DISPLAY_NUMBER);
     const appsByHostList = templateTag({
       tag: 'div',
       attributes: [
@@ -86,4 +94,4 @@ export const hostsListPlugin = {
     });
     return appsByHostList;
   },
-};
+});
