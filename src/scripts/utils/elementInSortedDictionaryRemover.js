@@ -1,3 +1,5 @@
+import { indexOfOrdered } from './indexOfOrdered';
+
 // TODO: tests, add the orderedBy prop (a path?)
 /**
  *  Finds an `element` in a sorted array and removes it from the `dictionary`
@@ -10,8 +12,7 @@ export const elementInSortedDictionaryRemover = (dictionary, element /* , ordere
   }
   return key => {
     const sortedArray = dictionary.get(key);
-    // TODO: improve performance doing an optimized search with the property
-    const index = sortedArray.indexOf(element);
+    const index = indexOfOrdered(sortedArray, element, { isDescending: true });
     sortedArray.splice(index, 1);
 
     return element;

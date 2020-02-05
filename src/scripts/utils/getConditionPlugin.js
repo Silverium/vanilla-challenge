@@ -1,6 +1,7 @@
 // could be retrieved in any service
 import { COMPARATORS } from '@/config';
 // TODO: tests, accept paths and primitives
+// TODO: refactor and use similar approach like `indexOfOrdered` and use `getValue` and `isDescending`
 export const getConditionPlugin = () => {
   /**
    * Fetches the function to order an array of objects

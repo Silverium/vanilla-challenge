@@ -9,6 +9,7 @@ export const insertByOrder = (collection = [], element, condition = (a, b) => a 
   if (length) {
     // whenever the condition is met, insert the element into the collection
     // TODO: optimize recursive function to find the index inside the collection
+    // use similar approach to `indexOfOrdered`
     let counter = 0;
     // using a while loop instead a forEach, as it can be breaken when condition is met
     while (counter < length) {
