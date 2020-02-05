@@ -113,7 +113,13 @@ $displays: none, inline, inline-block, block, table, table-row, table-cell, flex
   width: 100%;
   display: flex;
   :first-child {
-    margin:auto;
+    margin: auto;
   }
-  
+}
+
+// interactions
+.cursor {
+  &-pointer {
+    cursor: pointer;
+  }
 }
