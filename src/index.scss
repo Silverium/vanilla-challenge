@@ -21,6 +21,8 @@
 //! sections
 @import './styles/layout/header';
 @import './styles/layout/grid';
-@import './styles/layout/hosts-list';
 @import './styles/layout/modal';
-@import './styles/layout/loader-chase';
+//! views
+@import './views/loader-chase';
+//! components
+@import './components/hosts-list';

@@ -34,7 +34,7 @@ export const hostsListPlugin = {
             attributes: [
               {
                 key: 'class',
-                value: 'appInHost d-flex flex-nowrap align-items-start my-2',
+                value: 'appInHost d-flex flex-nowrap align-items-start my-2 cursor-pointer',
               },
               { key: 'data-host-name', value: hostName },
               { key: 'data-app-name', value: element.name },
