@@ -40,11 +40,15 @@ const checkbox = templateCheckbox({
       key: 'id',
       value: 'listModeCheckbox',
     },
+    {
+      key: 'class',
+      value: 'cursor-pointer',
+    },
   ],
   labelAttributes: [
     {
       key: 'class',
-      value: 'text-nowrap ml-2',
+      value: 'text-nowrap ml-2 cursor-pointer',
     },
   ],
 });

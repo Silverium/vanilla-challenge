@@ -24,6 +24,7 @@ export const hostsListPlugin = {
               },
             ],
           });
+          // TODO: on clicking the header, show list of 25 first items
           const name = templateTag({
             tag: 'span',
             content: element.name,
