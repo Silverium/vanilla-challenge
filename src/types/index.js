@@ -28,3 +28,6 @@
  * @property {string} KeyValueAttribute.key
  * @property {string} [KeyValueAttribute.value]
  */
+/**
+ * @typedef {(a,b)=>boolean} OrderBy
+ */
