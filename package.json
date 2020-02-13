@@ -1,0 +1,44 @@
+{
+  "name": "vanilla-challenge",
+  "version": "1.0.0",
+  "description": "My webpack project",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "test",
+    "build": "webpack",
+    "start": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Silverium/vanilla-challenge.git"
+  },
+  "keywords": [
+    "vanilla",
+    "javascript",
+    "simple"
+  ],
+  "author": "soldeplatadeveloper@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Silverium/vanilla-challenge/issues"
+  },
+  "homepage": "https://github.com/Silverium/vanilla-challenge#readme",
+  "devDependencies": {
+    "@types/html-webpack-plugin": "^3.2.2",
+    "@types/node": "^13.7.1",
+    "@types/webpack": "^4.41.6",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "declaration-bundler-webpack-plugin": "^1.0.3",
+    "html-webpack-plugin": "^3.2.0",
+    "terser-webpack-plugin": "^2.3.4",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.5",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3",
+    "wepack-cli": "0.0.1-security",
+    "workbox-webpack-plugin": "^5.0.0"
+  }
+}
