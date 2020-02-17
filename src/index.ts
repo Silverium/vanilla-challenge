@@ -1,1 +1,4 @@
-console.log('I am index.ts')
+import './types'
+import { appsByHosts } from './views';
+
+appsByHosts.load();

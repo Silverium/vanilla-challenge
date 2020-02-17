@@ -1,0 +1,20 @@
+.hosts {
+  &-list {
+    color: $black-soft;
+    .apdex {
+      width: 30px;
+    }
+  }
+  .card {
+    background-color: $white;
+  }
+  &.grid-mode {
+    padding: 0px 15px;
+    margin-top: -30px;
+
+    .card {
+      margin: 30px 15px;
+      width: 375px;
+    }
+  }
+}
