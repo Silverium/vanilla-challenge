@@ -1,0 +1,32 @@
+//? set your brand colors
+
+$white: #fff;
+
+$light-grey: #f5f5f5;
+$grey: #d7d7d7;
+
+$black-soft: #4A4A4A;
+$black: #09090e;
+
+$blue: #2c638f;
+$pink: #fff0f5;
+$yellow: #fffacd;
+
+//? override for project clarity
+
+$color-primary: $blue;
+$color-secondary: $pink;
+$color-tertiary: $yellow;
+$spacer: 10px;
+$spacers: (
+  0: 0,
+  1: (
+    $spacer * 1,
+  ),
+  2: (
+    $spacer * 2,
+  ),
+  3: (
+    $spacer * 3,
+  ),
+);
