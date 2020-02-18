@@ -1,3 +1,5 @@
+import './_loader-chase.scss';
+
 const innerHtml = `
 <div class="centered">
   <div class="sk-chase">

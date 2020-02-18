@@ -1,2 +1,2 @@
-export { appsByHosts } from './appsByHosts';
-export { loaderChasePlugin } from './loaderChase';
+export { appsByHosts } from './appsByHosts/appsByHosts';
+export { loaderChasePlugin } from './loaderChase/loaderChase';

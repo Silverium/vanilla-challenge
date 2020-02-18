@@ -1,6 +1,10 @@
+import { loaderChasePlugin } from './views/';
 import './types'
-import './index.scss';
+import './sass/index.scss';
 
 import { appsByHosts } from './views';
+
+const loader = loaderChasePlugin.loaderChaseNode();
+document.body.appendChild(loader);
 
 appsByHosts.load();
