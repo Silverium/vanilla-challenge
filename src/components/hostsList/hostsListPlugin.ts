@@ -1,5 +1,6 @@
+import { templateTag } from './../../templates/templateTag';
 import './_hosts-list.scss';
-import { ApdexSdk, templateTag } from '../../scripts';
+import { ApdexSdk } from '../../Apdex/ApdexSdk';
 import { hostAppData as list } from '../../mocks';
 import { APPS_BY_HOST_DISPLAY_NUMBER } from '../../config';
 import { AppData } from '../../types';

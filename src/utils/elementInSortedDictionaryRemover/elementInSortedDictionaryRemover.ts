@@ -1,4 +1,4 @@
-import { indexOfOrdered } from './indexOfOrdered';
+import { indexOfOrdered } from '../indexOfOrdered/indexOfOrdered';
 
 // TODO: tests, add the orderedBy prop (a path?)
 /**

@@ -1,6 +1,6 @@
 // could be retrieved in any service
-import { COMPARATORS } from '../../config';
-import { Comparator } from '../../types';
+import { COMPARATORS } from '../../../config';
+import { Comparator } from '../../../types';
 // TODO: tests, accept paths and primitives
 // TODO: refactor and use similar approach like `indexOfOrdered` and use `getValue` and `isDescending`
 export const getConditionPlugin = () => {

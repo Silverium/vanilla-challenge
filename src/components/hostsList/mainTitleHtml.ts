@@ -1,4 +1,4 @@
-import { templateTag, templateCheckbox } from '../../scripts';
+import { templateTag, templateCheckbox } from '../../templates';
 
 const userEmail = 'averylongemailaddress@companyname.com';
 const titleH1 = templateTag({

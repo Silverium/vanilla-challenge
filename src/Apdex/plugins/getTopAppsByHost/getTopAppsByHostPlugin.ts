@@ -1,5 +1,5 @@
-import { APPS_BY_HOST_RESULTS_NUMBER as resultsNumber } from '../../config';
-import { RankedAppsByHost } from '../../types';
+import { APPS_BY_HOST_RESULTS_NUMBER as resultsNumber } from '../../../config';
+import { RankedAppsByHost } from '../../../types';
 /**
  *
  * @param {RankedAppsByHost} rankedAppsByHost

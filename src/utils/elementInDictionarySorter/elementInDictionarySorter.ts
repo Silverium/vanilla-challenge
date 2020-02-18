@@ -1,4 +1,4 @@
-import { insertByOrder } from './insertByOrder';
+import { insertByOrder } from '../insertByOrder/insertByOrder';
 /**
  * Inserts in the value (an array) of a dictionary an `element` ordered by the `sortBy` function
  * @param {Map<*,[]>} dictionary

@@ -1,10 +1,10 @@
 import {
-  getConditionPlugin,
   elementInDictionarySorter,
   elementInSortedDictionaryRemover,
-} from '../../scripts/utils';
-import { APPS_ORDER_COMPARATOR, APPS_PROPERTY_TO_COMPARE } from '../../config';
-import { RankedAppsByHost, AppData } from '../../types';
+} from '../utils';
+import {getConditionPlugin} from './plugins/getConditionPlugin/getConditionPlugin'
+import { APPS_ORDER_COMPARATOR, APPS_PROPERTY_TO_COMPARE } from '../config';
+import { RankedAppsByHost, AppData } from '../types';
 
 /**
  * Plugin that returns an object of methods that are able to create a Map of ranked AppData for each Host,

@@ -1,4 +1,4 @@
-import { AppData, RankedAppsByHost } from "../../types";
+import { AppData, RankedAppsByHost } from "../../../types";
 
 /**
  * Composition function that adds one App to rankedAppsByHost and to the list of Apps

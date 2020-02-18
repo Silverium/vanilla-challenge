@@ -1,5 +1,5 @@
 import { hostsListPlugin, mainTitleHtml, modalSdk } from '../../components';
-import { templateTag } from '../../scripts';
+import { templateTag } from '../../templates';
 
 export const appsByHosts = {
   load(state: { isGridMode: Boolean } = { isGridMode: false }) {

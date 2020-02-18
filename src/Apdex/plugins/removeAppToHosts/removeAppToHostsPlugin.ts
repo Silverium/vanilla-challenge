@@ -1,4 +1,4 @@
-import { AppData, RankedAppsByHost } from "../../types";
+import { AppData, RankedAppsByHost } from "../../../types";
 
 /**
  * Composition function that removes one App from rankedAppsByHost and from the list of Apps
