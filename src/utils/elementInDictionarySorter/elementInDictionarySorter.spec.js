@@ -1,7 +1,7 @@
 import { elementInDictionarySorter } from './elementInDictionarySorter';
-import { insertByOrder } from '@/scripts/utils';
+import { insertByOrder } from '../insertByOrder/insertByOrder';
 
-jest.mock('@/scripts/utils');
+jest.mock('../insertByOrder/insertByOrder');
 describe('elementInDictionarySorter', () => {
   const key = 'foo';
   const sortBy = (a, b) => a > b;
