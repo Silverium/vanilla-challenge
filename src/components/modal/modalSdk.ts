@@ -1,3 +1,4 @@
+import './_modal.scss';
 /**
  * Sets the `innerHtml` property of the html element with id=`id`
  * @param {string} id

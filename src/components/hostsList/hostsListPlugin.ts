@@ -1,15 +1,17 @@
-import { ApdexSdk, templateTag } from '../scripts';
-import { hostAppData as list } from '../mocks';
-import { APPS_BY_HOST_DISPLAY_NUMBER } from '../config';
+import './_hosts-list.scss';
+import { ApdexSdk, templateTag } from '../../scripts';
+import { hostAppData as list } from '../../mocks';
+import { APPS_BY_HOST_DISPLAY_NUMBER } from '../../config';
+import { AppData } from '../../types';
 declare global {
   interface Window { Apdex: any; }
 }
-const Apdex = ApdexSdk(list);
+const Apdex = ApdexSdk(list as AppData[]);
 // using window as a store
 window.Apdex = Apdex;
 
 export const hostsListPlugin = Object.freeze({
-  getHostsHtml(hostsList: any[], resultsToDisplay?: number) {
+  getHostsHtml(hostsList: string[], resultsToDisplay?: number) {
     const grid = hostsList.reduce((htmlString: string, hostName: string) => {
       const allrankingResults = Apdex.getTopAppsByHost(hostName);
       const ranking = resultsToDisplay
@@ -27,7 +29,6 @@ export const hostsListPlugin = Object.freeze({
               },
             ],
           });
-          // TODO: on clicking the header, show list of 25 first items
           const name = templateTag({
             tag: 'span',
             content: element.name,

@@ -1,3 +1,3 @@
-export { hostsListPlugin } from './hostsListPlugin';
-export { mainTitleHtml } from './mainTitleHtml';
-export { modalSdk } from './modalSdk';
+export { hostsListPlugin } from './hostsList/hostsListPlugin';
+export { mainTitleHtml } from './hostsList/mainTitleHtml';
+export { modalSdk } from './modal/modalSdk';
