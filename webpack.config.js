@@ -50,7 +50,7 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Development',
+      title: 'Vanilla Challenge',
     }),
   ],
   output: {
