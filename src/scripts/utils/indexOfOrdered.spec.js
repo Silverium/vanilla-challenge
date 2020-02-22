@@ -3,6 +3,7 @@ import { indexOfOrdered, getSameValues } from './indexOfOrdered';
 const minSize = 5000;
 const maxSize = 5001;
 // TODO: use jest tables
+// TODO: split code!!!
 const numbers = size => Array.from(Array(size), (element, index) => size - index);
 const objects = size =>
   Array.from(Array(size), (element, index) => ({
@@ -38,7 +39,7 @@ describe('indexOfOrdered', () => {
       expect(result).toBe(expected);
     });
   });
-  describe.skip('Given collections with repeated values', () => {
+  describe('Given collections with repeated values', () => {
     describe('When no secondary criteria is given', () => {
       it('should return the first object with the same value', () => {
         const arr = [0, 1, 1, 2, 2, 2, 2, 2, 4, 5, 6, 7, 8, 9, 10];
@@ -47,18 +48,31 @@ describe('indexOfOrdered', () => {
         const result = indexOfOrdered(arr, value);
         expect(result).toBe(expected);
       });
+      it('should return the last object with the same value', () => {
+        const arr = [110, 11, 11, 2, 2, 2, 2, 2, -4, -5, -6, -7, -8, -9, -10];
+        const value = 2;
+        const expected = 7;
+        const result = indexOfOrdered(arr, value, { isDescending: true });
+        expect(result).toBe(expected);
+      });
     });
   });
-  // TODO: ascending collections
-  // TODO: non linear collections ([1,5,6,23,45...])
 });
 describe('getSameValues', () => {
   it('should return start and end of indexes of same values', () => {
     const result = getSameValues([2, 2, 2, 2, 2, 2, 6], 2);
     expect(result).toBe(5);
   });
+  it('should return start and end of indexes of same values', () => {
+    const result = getSameValues([2, 6], 2);
+    expect(result).toBe(0);
+  });
   it('should return end and start of indexes of same values', () => {
     const result = getSameValues([2, 2, 2, 2, 4, 5, 6, 6, 6, 6, 6], 6, { isLastElement: true });
+    expect(result).toBe(6);
+  });
+  it('should return end and start of indexes of same values', () => {
+    const result = getSameValues([2, 2, 2, 2, 4, 5, 6], 6, { isLastElement: true });
     expect(result).toBe(6);
   });
   const table = [
@@ -75,7 +89,7 @@ describe('getSameValues', () => {
     [false, 100, 101, [...valueTimes(101, 101), ...valueTimes(9000, 1200)]],
   ];
 
-  it.each(table)(
+  test.each(table)(
     'a %s last element will have %s repeated from/to index %s',
     (isLastElement, expected, element, collection) => {
       expect(getSameValues(collection, element, { isLastElement })).toBe(expected);

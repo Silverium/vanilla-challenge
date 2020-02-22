@@ -1,5 +1,6 @@
 export const getSameValues = (collection, element, options = {}) => {
   const { length } = collection;
+  if (!length) return 0;
   const { getValue = value => value, isLastElement = false } = options;
   const minBoundary = 0;
   const maxBoundary = length - 1;
@@ -52,12 +53,6 @@ export const getSameValues = (collection, element, options = {}) => {
   }
   return -1;
 };
-console.log(
-  getSameValues([13, 13, 13, 13, 13, 13, 13, 13, 13, 0, 1, 2, 3, 4], 13, {
-    isLastElement: false,
-    isDescending: true,
-  })
-);
 export const indexOfSimpleOrdered = (collection = [], element, options = {}) => {
   if (element !== 0 && !element) {
     throw new Error('missing parameters');
@@ -85,9 +80,21 @@ export const indexOfSimpleOrdered = (collection = [], element, options = {}) => 
   while (loops <= maxLoopsToResolve && index <= maxBoundary && index >= minBoundary) {
     if (getValue(collection[index]) === getValue(element)) {
       // find how many elements to the left exist with the same value and set min
+      const sameValuesToLeft = getSameValues(collection.slice(min, index), element, {
+        ...options,
+        isLastElement: true,
+      });
       // find how many elements to the right and set max
+      const sameValuesToRight = getSameValues(collection.slice(index, max), element, {
+        ...options,
+        isLastElement: false,
+      });
       // 1.1 no secondary condition => get the first one (last for descending)
-      // 1.2 call this function withsecondary condition
+      if (isDescending) {
+        return index + sameValuesToRight;
+      }
+      return min + sameValuesToLeft;
+      // TODO: 1.2 call this function withsecondary condition
       break;
     }
     const isToTheEnd = isDescending
