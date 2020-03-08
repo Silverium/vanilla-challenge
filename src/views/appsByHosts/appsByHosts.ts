@@ -2,11 +2,11 @@ import { hostsListPlugin, mainTitleHtml, modalSdk } from '../../components';
 import { templateTag } from '../../templates';
 
 export const appsByHosts = {
-  async load(state: { isGridMode: Boolean } = { isGridMode: false }) {
-    const isLoaded = await hostsListPlugin.load('https://raw.githubusercontent.com/Silverium/vanilla-challenge/master/src/mocks/host-app-data.json');
-    if(!isLoaded){
-      throw new Error('could not load data')
-    }
+  async init(){
+   await hostsListPlugin.load('https://raw.githubusercontent.com/Silverium/vanilla-challenge/master/src/mocks/host-app-data.json');
+   this.load();
+  },
+  load(state: { isGridMode: Boolean } = { isGridMode: false }) {
     let { isGridMode } = state;
     const containerHtml = templateTag({
       attributes: [{ key: 'class', value: 'container' }],

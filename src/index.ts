@@ -7,4 +7,4 @@ import { appsByHosts } from './views';
 const loader = loaderChasePlugin.loaderChaseNode();
 document.body.appendChild(loader);
 
-appsByHosts.load();
+appsByHosts.init();
