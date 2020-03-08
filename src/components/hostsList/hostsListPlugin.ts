@@ -1,25 +1,40 @@
 import { templateTag } from './../../templates/templateTag';
 import './_hosts-list.scss';
 import { ApdexSdk } from '../../Apdex/ApdexSdk';
-import { hostAppData as list } from '../../mocks';
 import { APPS_BY_HOST_DISPLAY_NUMBER } from '../../config';
 import { AppData } from '../../types';
 declare global {
   interface Window { Apdex: any; }
 }
-const Apdex = ApdexSdk(list as AppData[]);
-// using window as a store
-window.Apdex = Apdex;
+
 
 export const hostsListPlugin = Object.freeze({
+  async load(url: string) {
+    try {
+      const list: AppData[] = await fetch(url)
+        .then((response) => {
+          return response.json();
+        })
+
+      const Apdex = ApdexSdk(list as AppData[]);
+      // using window as a store
+      window.Apdex = Apdex;
+
+      return Apdex;
+    } catch (error) {
+      console.error(error);
+
+      return false
+    }
+  },
   getHostsHtml(hostsList: string[], resultsToDisplay?: number) {
     const grid = hostsList.reduce((htmlString: string, hostName: string) => {
-      const allrankingResults = Apdex.getTopAppsByHost(hostName);
+      const allrankingResults = window.Apdex.getTopAppsByHost(hostName);
       const ranking = resultsToDisplay
         ? allrankingResults.slice(0, resultsToDisplay)
         : allrankingResults;
       const appsListLi = ranking
-        .map((element, rankingIndex) => {
+        .map((element: { apdex: any; name: any; }, rankingIndex: any) => {
           const apdex = templateTag({
             tag: 'span',
             content: String(element.apdex),
@@ -79,7 +94,7 @@ export const hostsListPlugin = Object.freeze({
     return grid;
   },
   getHtml() {
-    const rankedHosts = Apdex.getHostsList();
+    const rankedHosts = window.Apdex.getHostsList();
 
     const grid = this.getHostsHtml(rankedHosts, APPS_BY_HOST_DISPLAY_NUMBER);
     const appsByHostList = templateTag({
